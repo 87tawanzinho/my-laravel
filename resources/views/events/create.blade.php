@@ -19,7 +19,7 @@
                 <option value="1">Sim</option>
             </select>
     
-            <input type="submit" class="hover:opacity-60 transition-all  bg-green-400 p-2 border mt-4 rounded-2xl cursor-pointer" />
+            <input type="submit" class="hover:opacity-60 transition-all  bg-blue-600 text-white p-2 border mt-4 rounded-2xl cursor-pointer" />
         </form>
         </div>
     </div>

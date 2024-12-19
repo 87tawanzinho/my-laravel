@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
 </head>
-<body>
+<body class="">
 
     @if(session('msg'))
     <p class="p-4 bg-green-400 border"> {{session('msg')}}  </p>
@@ -34,6 +34,6 @@
     <footer class="fixed bottom-0 p-4 text-center w-full border-t border-white bg-black text-white"> 
         Produzido por Thiago Tawan
     </footer>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>

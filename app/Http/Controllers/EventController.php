@@ -41,7 +41,19 @@ public function store(Request $request)
         return redirect('/events/create')->with('error', 'Não foi possível criar um novo evento.');
     }
 }
+
+public function show($id) {
+    $event = Event::findOrFail($id);
+
+
+    return view('events.show', [
+        'event' => $event
+    ]);
 }
+
+}
+
+
 
 
       
