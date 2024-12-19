@@ -21,4 +21,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-/img/events
+/public/img/events
