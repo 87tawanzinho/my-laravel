@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
 </head>
-<body class="pb-24">
 
+<body class="bg-gray-50 font-roboto pb-24">
+
+    <!-- Mensagens de sucesso/erro -->
     @if(session('msg'))
-    <p class="p-4 bg-green-400 border"> {{session('msg')}}  </p>
+    <div class="p-4 bg-green-500 text-white text-center font-semibold rounded-md shadow-md mb-4">
+        {{ session('msg') }}
+    </div>
     @elseif(session('error'))
-    <p class="p-4 bg-red-400 border"> {{session('error')}}  </p>
+    <div class="p-4 bg-red-500 text-white text-center font-semibold rounded-md shadow-md mb-4">
+        {{ session('error') }}
+    </div>
     @endif
 
-    <header class="p-6 border-b flex gap-4  justify-between">
-        <div class="flex gap-4">
-        <a href="/" class='hover:opacity-60 transition-all'>Eventos do Lol</a>
-        <a href="events/create" class='hover:opacity-60 transition-all'>Criar Eventos</a>
+    <!-- Cabeçalho -->
+    <header class="p-6 bg-white shadow-md flex items-center justify-between border-b">
+        <div class="flex items-center gap-4">
+            <p class="flex gap-2 items-center text-2xl text-blue-800 font-semibold">
+                <ion-icon name="logo-discord" class="text-3xl"></ion-icon> 
+                <span class="text-green-700">League of Legends |</span>
+            </p>
+            <nav class="space-x-6">
+                <a href="/" class="hover:text-blue-600 transition-all">Eventos do LoL</a>
+                <a href="/events/create" class="hover:text-blue-600 transition-all">Criar Eventos</a>
+            </nav>
         </div>
-       
 
-        @auth
-       <div class="flex gap-8">
-         <a href="/dashboard" class='hover:opacity-60 transition-all border-b'>Meu Perfil</a>
-          <form class='hover:opacity-60 transition-all text-red-800' action="/logout" method="POST"> 
-            @csrf
-             <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"  >Sair</a>
-          </form>
-       </div>
-        @endauth
+        <!-- Área de login e perfil -->
+        <div class="flex gap-6 items-center">
+            @auth
+            <a href="/dashboard" class="text-gray-800 hover:text-blue-600 transition-all">Meu Perfil</a>
+            <form class="inline" action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="text-red-600 hover:text-red-800 transition-all">Sair</button>
+            </form>
+            @endauth
 
-        @guest
-       <div class="flex gap-4">
-        <a href="/login" class='hover:opacity-60 transition-all'>Login</a>
-        <a href="/register" class='hover:opacity-60 transition-all'>Cadastro</a>
-       </div>
-       @endguest
-
+            @guest
+            <a href="/login" class="text-gray-800 hover:text-blue-600 transition-all">Login</a>
+            <a href="/register" class="text-gray-800 hover:text-blue-600 transition-all">Cadastro</a>
+            @endguest
+        </div>
     </header>
 
-    @yield('content')
+    <!-- Conteúdo -->
+    <main>
+        @yield('content')
+    </main>
 
-    <footer class=" z-50 bottom-0 fixed  mt-4 p-4 text-center w-full border-t border-white bg-black text-white"> 
-        Produzido por Thiago Tawan
+    <!-- Rodapé -->
+    <footer class="fixed bottom-0 w-full bg-black text-white py-4 mt-4">
+        <div class="flex justify-center items-center gap-2">
+            <ion-icon name="logo-discord" class="text-2xl"></ion-icon>
+            <span>League of Legends</span>
+        </div>
     </footer>
-   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
+
 </html>

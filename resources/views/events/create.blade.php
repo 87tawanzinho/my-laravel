@@ -20,7 +20,12 @@
                 <option value="1">Sim</option>
             </select>
 
-          
+           @foreach (json_decode($champions) as $champion )
+
+   {{ $champion}} ;//// tresolve
+           @endforeach
+           
+      
 
            <div class="flex   gap-2 mt-8 mb-4">
           <div>   <input type="checkbox" name="items[]" value="Necessita Pc Bom" />  Necessita Pc Bom</div>
@@ -34,4 +39,7 @@
         </form>
         </div>
     </div>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <
 @endsection
