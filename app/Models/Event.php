@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
    protected $fillable = [
-    "title","description","text","private"
+    "title","description","text","private", "main"
    ];
+
+   protected $casts = [
+      "items" => "array"
+   ];
+   
 }

@@ -3,16 +3,19 @@
 
 
 @section('content')
-    <div class="w-full flex justify-center ">
-        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7b058bea-62a2-44e0-9d22-173cee5824f5/dcr4qmu-413b59d9-cf7c-4894-92c8-554aa92001e5.png/v1/fill/w_1000,h_361,q_80,strp/k_da_akali___twitter_banner_by_kirapwns_dcr4qmu-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzYxIiwicGF0aCI6IlwvZlwvN2IwNThiZWEtNjJhMi00NGUwLTlkMjItMTczY2VlNTgyNGY1XC9kY3I0cW11LTQxM2I1OWQ5LWNmN2MtNDg5NC05MmM4LTU1NGFhOTIwMDFlNS5wbmciLCJ3aWR0aCI6Ijw9MTAwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.MVIO47SLCok-9xuViLBiXqhcicQqKkKYLEw_1UMgwo4" class=" h-96 rounded-2xl border-gray-400 border-4 mt-8 ">
+    <div class="w-full flex flex-col items-center justify-center ">
+        <img src="/elise-bg.jpg" class=" h-96 w-full object-cover object-top   ">
+      <form action="/" method="GET" class="w-full flex justify-center">
+          <input name="search"  class="outline-none  mt-4 rounded-2xl w-4/12 border mx-4 p-2"  placeholder="Procurar um Evento.." />
+      </form>
     </div>
-  <div class="flex gap-3 justify-center mt-12 ">
+  <div class="flex gap-3 justify-center mt-12 " >
     @foreach ($events as $event)
-    <div class="flex flex-col border w-80 rounded-lg box-shadow">
-      <div class="flex justify-center my-4">
-          <img src="/img/events/{{$event->image}}" class="w-48 rounded-lg">
+    <div class="flex flex-col border w-80 rounded-lg box-shadow z-50 bg-white">
+      <div class="flex justify-center mb-8">
+          <img src="/img/events/{{$event->image}}" class="w-full h-48 object-cover  object-top rounded-lg">
       </div>
-     <div class="flex flex-col px-2 py-2">
+     <div class="flex flex-col px-2 ">
      <span class="border-b mb-2">
      <ion-icon name="accessibility-outline"></ion-icon>
      {{$event->title}}
