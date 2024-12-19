@@ -19,7 +19,7 @@ class EventController extends Controller
         $events = Event::all();
     }
 
-        return view('welcome', ['events' => $events]);
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
     
     public function create() { 
@@ -45,11 +45,14 @@ public function store(Request $request)
             $event->image = $imageName;
         }
 
+        $user = auth()->user();
+        $event->user_id = $user->id;
+
         $event->save();
 
         return redirect('/')->with('msg', "Você criou um novo evento: $event->title");
     } catch (\Exception $e) {
-        return redirect('/events/create')->with('error', 'Não foi possível criar um novo evento.');
+        return redirect('/events/create')->with('error', "Não foi possível criar um novo evento. $e");
     }
 }
 

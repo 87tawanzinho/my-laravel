@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
 </head>
-<body class="">
+<body class="pb-24">
 
     @if(session('msg'))
     <p class="p-4 bg-green-400 border"> {{session('msg')}}  </p>
@@ -23,15 +23,30 @@
         <a href="/" class='hover:opacity-60 transition-all'>Eventos do Lol</a>
         <a href="events/create" class='hover:opacity-60 transition-all'>Criar Eventos</a>
         </div>
-       <div class="flex gap-4">
-        <a href="" class='hover:opacity-60 transition-all'>Login</a>
-        <a href="" class='hover:opacity-60 transition-all'>Cadastro</a>
+       
+
+        @auth
+       <div class="flex gap-8">
+         <a href="/dashboard" class='hover:opacity-60 transition-all border-b'>Meu Perfil</a>
+          <form class='hover:opacity-60 transition-all text-red-800' action="/logout" method="POST"> 
+            @csrf
+             <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"  >Sair</a>
+          </form>
        </div>
+        @endauth
+
+        @guest
+       <div class="flex gap-4">
+        <a href="/login" class='hover:opacity-60 transition-all'>Login</a>
+        <a href="/register" class='hover:opacity-60 transition-all'>Cadastro</a>
+       </div>
+       @endguest
+
     </header>
 
     @yield('content')
 
-    <footer class="fixed bottom-0 p-4 text-center w-full border-t border-white bg-black text-white"> 
+    <footer class=" z-50 bottom-0 fixed  mt-4 p-4 text-center w-full border-t border-white bg-black text-white"> 
         Produzido por Thiago Tawan
     </footer>
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
