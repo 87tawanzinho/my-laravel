@@ -10,11 +10,13 @@
     @foreach ($events as $event)
     <div class="flex flex-col border w-72 rounded-lg box-shadow">
       <div class="flex justify-center my-4">
-          <img src="https://imgcdn.stablediffusionweb.com/2024/3/20/8e091faa-20bc-414d-80a1-c8ad3609fd87.jpg" class="w-48 rounded-lg">
+          <img src="/img/events/{{$event->image}}" class="w-48 rounded-lg">
       </div>
-      <span>{{$event->title}}</span>
+     <div class="flex flex-col px-2 py-2">
+     <span class="border-b mb-2">{{$event->title}}</span>
       <span>{{$event->description}}</span>
       <span>{{$event->city}}</span>
+     </div>
     </div>
   @endforeach
   </div>
