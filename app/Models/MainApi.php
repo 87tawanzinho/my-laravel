@@ -8,9 +8,9 @@ class MainApi extends Model
 {
     //
 
- protected $table = 'mains_api';
+ protected $table = 'champions';
 
     protected $fillable = [
-        'mainsApi'
+        'name'
     ];
 }

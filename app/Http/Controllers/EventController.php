@@ -25,9 +25,15 @@ class EventController extends Controller
     }
     
     public function create() { 
-        $champions = MainApi::find(1)->mainsApi; 
-        return view('events.create', ['champions' => $champions]);
+        return view('events.create', );
 }
+
+    public function search(Request $request)  {
+    $query = $request->get('query'); 
+    $champions = MainApi::where('name', 'like', '%'.$query.'%')->limit(10)->get();
+    return response()->json($champions);
+}
+
 public function store(Request $request)
 {
     try {

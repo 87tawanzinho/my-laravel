@@ -9,6 +9,8 @@
         <form action="/events" method="POST" enctype="multipart/form-data" class="flex flex-col  mt-4 gap-2">
             @csrf
             <input type="file" id="image" name="image"/>
+            <input type="text" id="search-campeao" placeholder="Digite o nome do campeão..."/>
+            <ul id="campeao-list"></ul>
             <input placeholder="Seu main"  name="main" class='p-2 border rounded-lg' />
             <input placeholder="Titulo" name="title" class='p-2 border rounded-lg' />
             <input placeholder="Descrição" name="description" class='p-2 border rounded-lg' />
@@ -20,10 +22,7 @@
                 <option value="1">Sim</option>
             </select>
 
-           @foreach (json_decode($champions) as $champion )
-
-   {{ $champion}} ;//// tresolve
-           @endforeach
+     
            
       
 
@@ -39,7 +38,39 @@
         </form>
         </div>
     </div>
-
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <
+     
 @endsection
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#search-campeao').on('keyup', function() {
+        let query = $(this).val();
+        if (query.length >= 2) {  // Começar a busca após 2 caracteres
+            $.ajax({
+                url: '{{ route("search.champions") }}',  // Rota criada no Laravel
+                method: 'GET',
+                data: { query: query },
+                success: function(data) {
+                    $('#campeao-list').empty();  // Limpa a lista de sugestões
+                    if (data.length > 0) {
+                        data.forEach(function(campeao) {
+                            $('#campeao-list').append('<li>' + campeao.name + '</li>');
+                        });
+                    } else {
+                        $('#campeao-list').append('<li>Nenhum campeão encontrado.</li>');
+                    }
+                },
+                error: function() {
+                    $('#campeao-list').empty().append('<li>Erro ao carregar campeões.</li>');
+                }
+            });
+        } else {
+            $('#campeao-list').empty();  // Limpa a lista se menos de 2 caracteres
+        }
+    });
+});
+</script>
