@@ -87,9 +87,12 @@ public function destroy($id) {
     return redirect('/dashboard')->with('msg', "Você deletou com sucesso o evento de numero $id");
    
 }
+
+
+public function joinEvent($id) {
+    $user = auth()->user(); 
+    $events = $user->eventsAsParticipant()->attach($id); 
+    return redirect('/')->with('msg','Você confirmou sua presença.');
 }
-
-
-
-
-      
+ 
+}

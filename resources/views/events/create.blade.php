@@ -9,7 +9,7 @@
             <form action="/events" method="POST" enctype="multipart/form-data" class="flex flex-col mt-4 gap-2">
                 @csrf
                 <input type="file" id="image" name="image"/>
-                <input placeholder="Seu main" type="text" id="search-campeao" class='p-2 border rounded-lg'/>
+                <input placeholder="Seu main" type="text" name="main" id="search-campeao" class='p-2 border rounded-lg'/>
                 <ul id="campeao-list" class=" mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto hidden z-10"></ul>
                 <input placeholder="Titulo" name="title" class='p-2 border rounded-lg'/>
                 <input placeholder="Descrição" name="description" class='p-2 border rounded-lg'/>
